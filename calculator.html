@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Calculator</title>
+    <meta charset="UTF-8"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+      body{
+        border-color: #0f0000;
+      }
+      button {
+                width: 100%;
+                height: 70px;
+                font-size: 24px;
+                background-color: white;
+                border: none;
+            }
+
+            input {
+                height: 120px;
+                font-size: 40px;
+                vertical-align: bottom;
+                text-align: right;
+                padding-right: 16px;
+                background-color: #ececec;
+            }
+
+            table {
+                width: 40%;
+                border-color: #0f0000;
+            }
+            .container {
+                width: 320px;
+                background-color: white;
+                margin: 120px auto;
+            }
+
+    </style>
+
+  </head>
+
+  <body>
+    <div class="container">
+      <table>
+
+        <tr>
+          <td colspan="5">
+            <input id="result" type="text" value="0" disabled>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="deg">DEG</button>
+          </td>
+          <td>
+            <button id="fe">F-E</button>
+          </td>
+          <td colspan="3"></td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="sin">Sin</button>
+          </td>
+          <td>
+            <button id="cos">Cos</button>
+          </td>
+          <td>
+            <button id="tan">Tan</button>
+          </td>
+          <td>
+            <button id="csc">Cosec</button>
+          </td>
+          <td>
+            <button id="sec">Sec</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="mc">MC</button>
+          </td>
+          <td>
+            <button id="mr">MR</button>
+          </td>
+          <td>
+            <button id="mplus">M+</button>
+          </td>
+          <td>
+            <button id="mminus">M-</button>
+          </td>
+          <td>
+            <button id="ms">MS</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="xcube">x<sup>3</sup></button>
+          </td>
+          <td>
+            <button id="yrootx">y√x</button>
+          </td>
+          <td>
+            <button id="asinh">asinh</button>
+          </td>
+          <td>
+            <button id="acosh">acosh</button>
+          </td>
+          <td>
+            <button id="atanh">aTanh</button>
+          </td>
+        </tr>
+
+
+        <tr>
+          
+          <td>
+            <button id="cube">∛x</button>
+          </td>
+          <td>
+            <button id="pi">Pi</button>
+          </td>
+          <td>
+            <button id="e">e</button>
+          </td>
+          <td>
+            <button id="c">AC</button>
+          </td>
+          <td>
+            <button id="delete">⇦</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="square">x<sup>2</sup></button>
+          </td>
+          <td>
+            <button id="root">1/x</button>
+          </td>
+          <td>
+            <button id="mode">|x|</button>
+          </td>
+          <td>
+            <button id="exp">exp</button>
+          </td>
+          <td>
+            <button id="mod">mod</button>
+          </td>
+        </tr>
+
+        <tr>
+          
+          <td>
+            <button id="sqrt">√x</button>
+          </td>
+          <td>
+            <button id="openbracket">(</button>
+          </td>
+          <td>
+            <button id="closebracket">)</button>
+          </td>
+          <td>
+            <button id="factorial">X!</button>
+          </td>
+          <td>
+            <button id="divide">/</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="powery">x<sup>y</sup></button>
+          </td>
+          <td>
+            <button id="seven">7</button>
+          </td>
+          <td>
+            <button id="eight">8</button>
+          </td>
+          <td>
+            <button id="nine">9</button>
+          </td>
+          <td>
+            <button id="multiply">*</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="base10">10<sup>x</sup></button>
+          </td>
+          <td>
+            <button id="four">4</button>
+          </td>
+          <td>
+            <button id="five">5</button>
+          </td>
+          <td>
+            <button id="six">6</button>
+          </td>
+          <td>
+            <button id="subtract">-</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="log">log</button>
+          </td>
+          <td>
+            <button id="one">1</button>
+          </td>
+          <td>
+            <button id="two">2</button>
+          </td>
+          <td>
+            <button id="three">3</button>
+          </td>
+          <td>
+            <button id="addition">+</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <button id="ln">ln</button>
+          </td>
+          <td>
+            <button id="sign">+/-</button>
+          </td>
+          <td>
+            <button id="zero">0</button>
+          </td>
+          <td>
+            <button id="dot">.</button>
+          </td>
+          <td>
+            <button id="equal">=</button>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+    <script src="calc.js"></script>
+  </body>
+
+</html>
