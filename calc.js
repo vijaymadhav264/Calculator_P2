@@ -1,452 +1,229 @@
-var mvalue = 0; //Setting Memory Value to Zero
-var opera = 0; //Setting operation flag to zero
-const screen = document.getElementById("result");
+let result = document.getElementById("inputlabel");
 
-//Return the screen value
-function getvalue() {
-  return screen.value;
-}
+let calculate = (number) => {
+  result.value += number;
+};
 
-//will set the screen value
-function setvalue(y) {
-  let x = getvalue();
 
-  //screen will start from new if value is zero Error or operation is done
-  if (x == '0' || x == "Error" || opera != 0) {
-    screen.value = y;
-    opera = 0;
-  } else {
-    screen.value = x + y;
+let Result = () => {
+  // log
+  if (result.value.includes("log")) {
+    let n = result.value.substring(3);
+    result.value = Math.log(n);
   }
-}
 
-//for button number 1
-document.getElementById("one").addEventListener("click", function() {
-  setvalue('1')
-});
-
-//for button number 2
-document.getElementById("two").addEventListener("click", function() {
-  setvalue('2')
-});
-
-//for button number 3
-document.getElementById("three").addEventListener("click", function() {
-  setvalue('3')
-});
-
-//for button number 4
-document.getElementById("four").addEventListener("click", function() {
-  setvalue('4')
-});
-
-//for button number 5
-document.getElementById("five").addEventListener("click", function() {
-  setvalue('5')
-});
-
-//for button number 6
-document.getElementById("six").addEventListener("click", function() {
-  setvalue('6')
-});
-
-//for button number 7
-document.getElementById("seven").addEventListener("click", function() {
-  setvalue('7')
-});
-
-//for button number 8
-document.getElementById("eight").addEventListener("click", function() {
-  setvalue('8')
-});
-
-//for button number 9
-document.getElementById("nine").addEventListener("click", function() {
-  setvalue('9')
-});
-
-//for button number 0
-document.getElementById("zero").addEventListener("click", function() {
-  setvalue('0')
-});
-
-//Screen will reset to zero again
-document.getElementById("c").addEventListener("click", function() {
-  screen.value = '0';
-});
-
-
-//delete last number from the screen
-document.getElementById("delete").addEventListener("click", function() {
-  let x = getvalue();
-  if (x == 0) {
-    screen.value = '0';
-  } else {
-    if (x.length > 1)
-      screen.value = x.slice(0, x.length - 1);
-    else
-      screen.value = '0';
+  //ln => (log10) Natural log to base 10
+  else if (result.value.includes("ln")) {
+    let n = result.value.substring(2);
+    result.value = Math.log10(n);
   }
-});
-//Function sin()
-document.getElementById("sin").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value = Math.sin(x);
-    
-  } catch(err) {
-    screen.value = "Error";
+
+  // power of a function
+  else if (result.value.includes("^")) {
+    let temp = result.value;
+    let param1 = temp.split("^")[0];
+    let param2 = temp.substring(temp.indexOf("^") + 1);
+    result.value = Math.pow(param1, param2);
   }
-});
-//Function cos()
-document.getElementById("cos").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value = Math.cos(x);
-    
-  } catch(err) {
-    screen.value = "Error";
+
+  // absolute value
+  else if (result.value.includes("|")) {
+    let temp = result.value;
+    let param = temp.replaceAll("|", "");
+    result.value = Math.abs(param);
   }
-});
-//Function tan()
-document.getElementById("tan").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value = Math.tan(x);
-    
-  } catch(err) {
-    screen.value = "Error";
+
+  // fahrenheit to celsius
+  else if (result.value.includes("F")) {
+    let temp = result.value;
+    let fahrenheit = temp.replaceAll("F", "");
+    result.value = ((fahrenheit - 32) * 5) / 9;
   }
-});
 
-//Function cosec()
-document.getElementById("csc").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value =1 / Math.sin(screen.value);
-    
-  } catch(err) {
-    screen.value = "Error";
+  // degree to radian
+  else if (result.value.includes("deg")) {
+    let temp = result.value;
+    let deg = temp.replaceAll("deg", "");
+    result.value = (deg * Math.PI) / 180.0;
   }
-});
 
-//Function sec()
-document.getElementById("sec").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value =1 / Math.cos(screen.value);
-    
-  } catch(err) {
-    screen.value = "Error";
+  // asinh function
+  else if (result.value.includes("asinh")) {
+    let temp = result.value;
+    let n = temp.replaceAll("asinh", "");
+    result.value = Math.asinh(n);
   }
-});
-
-//Function asinh()
-document.getElementById("asinh").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value = Math.asinh(x);
-    
-  } catch(err) {
-    screen.value = "Error";
+  // cosec function
+  else if (result.value.includes("cosec")) {
+    let temp = result.value;
+    let n = temp.replaceAll("cosec", "");
+    result.value = 1 / Math.sin(n);
   }
-});
-
-//Function acosh()
-document.getElementById("acosh").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value = Math.acosh(x);
-    
-  } catch(err) {
-    screen.value = "Error";
+  // sin function
+  else if (result.value.includes("sin")) {
+    let temp = result.value;
+    let n = temp.replaceAll("sin", "");
+    result.value = Math.sin(n);
   }
-});
 
-//Function atanh()
-document.getElementById("atanh").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value = Math.atanh(x);
-    
-  } catch(err) {
-    screen.value = "Error";
+  // acosh function
+  else if (result.value.includes("acosh")) {
+    let temp = result.value;
+    let n = temp.replaceAll("acosh", "");
+    result.value = Math.acosh(n);
   }
-});
 
-//get pi value
-document.getElementById("pi").addEventListener("click", function() {
-  setvalue(Math.PI);
-  opera = 1;
-});
+  // sec function
+  else if (result.value.includes("sce")) {
+    let temp = result.value;
+    let n = temp.replaceAll("sec", "");
+    result.value = 1 / Math.cos(n);
+  }
+  // cos function
+  else if (result.value.includes("cos")) {
+    let temp = result.value;
+    let n = temp.replaceAll("cos", "");
+    result.value = Math.cos(n);
+  }
+  // atanh function
+  else if (result.value.includes("atanh")) {
+    let temp = result.value;
+    let n = temp.replaceAll("atanh", "");
+    result.value = Math.atanh(n);
+  }
+  // cot function
+  else if (result.value.includes("cot")) {
+    let temp = result.value;
+    let n = temp.replaceAll("cot", "");
+    result.value = 1 / Math.tan(n);
+  }
 
-//memory store to variable mvalue
-document.getElementById("ms").addEventListener("click", function() {
-  mvalue = screen.value;
-});
+  // tan function
+  else if (result.value.includes("tan")) {
+    let temp = result.value;
+    let n = temp.replaceAll("tan", "");
+    result.value = Math.tan(n);
+  }
 
-//gat value from mvalue
-document.getElementById("mr").addEventListener("click", function() {
-  setvalue(mvalue);
-});
+  // floor function
+  else if (result.value.includes("floor")) {
+    let temp = result.value;
+    let n = temp.replaceAll("floor", "");
+    result.value = Math.floor(n);
+  }
+  // ceil function
+  else if (result.value.includes("ceil")) {
+    let temp = result.value;
+    let n = temp.replaceAll("ceil", "");
+    result.value = Math.ceil(n);
+  }
+  // round function
+  else if (result.value.includes("round")) {
+    let temp = result.value;
+    let n = temp.replaceAll("round", "");
+    result.value = Math.round(n);
+  }
+  // sign function
+  else if (result.value.includes("sign")) {
+    let temp = result.value;
+    let n = temp.replaceAll("sign", "");
+    result.value = Math.sign(n);
+  }
 
-//add value to mvalue
-document.getElementById("mplus").addEventListener("click", function() {
-  mvalue += screen.value;
-});
+  // square root function
+  else if (result.value.includes("√")) {
+    let n = result.value.substring(1);
+    console.log(n);
+    result.value = Math.sqrt(n);
+  }
 
-//subtract value from mvalue
-document.getElementById("mminus").addEventListener("click", function() {
-  mvalue -= screen.value;
-});
+   // cube root function
+   else if (result.value.includes("∛")) {
+    let n = result.value.substring(1);
+    console.log(n);
+    result.value = Math.cbrt(n);
+  }
 
-//reset mvalue to zero
-document.getElementById("mc").addEventListener("click", function() {
-  mvalue = 0;
-});
+  // factorial
+  else if (result.value.includes("!")) {
+    size = result.value.length;
+    n = Number(result.value.substring(0, size - 1));
+    let f = 1;
 
-//will evaluate expression on screen and print it also set operation flag to 1
-document.getElementById("equal").addEventListener("click", function() {
+    for (i = 2; i <= n; i++) f = f * i;
+    result.value = f;
+  }
+
   try {
-    let z = eval(screen.value);
-    screen.value = z;
-    opera = 1;
+    result.value = eval(result.value);
   } catch (err) {
-    screen.value = "Error";
+    alert("Enter the valid Input");
   }
-});
+};
 
-//adding + sign to screen can also be done afyter performing operation
-document.getElementById("addition").addEventListener("click", function() {
-  opera = 0;
-  setvalue('+');
-});
-
-//adding - sign to screen can also be done afyter performing operation
-document.getElementById("subtract").addEventListener("click", function() {
-  opera = 0;
-  setvalue('-');
-});
-
-//adding / sign to screen can also be done afyter performing operation
-document.getElementById("divide").addEventListener("click", function() {
-  opera = 0;
-  setvalue('/');
-});
-
-//adding * sign to screen can also be done afyter performing operation
-document.getElementById("multiply").addEventListener("click", function() {
-  opera = 0;
-  setvalue('*');
-});
-
-//adding % sign to screen can also be done afyter performing operation
-document.getElementById("mod").addEventListener("click", function() {
-  opera = 0;
-  setvalue('%');
-});
-
-//adding ** sign to screen can also be done afyter performing operation
-document.getElementById("powery").addEventListener("click", function() {
-  opera = 0;
-  setvalue('**');
-});
-
-//adding an open bracket
-document.getElementById("openbracket").addEventListener("click", function() {
-  setvalue('(');
-});
-
-//adding an close bracket
-document.getElementById("closebracket").addEventListener("click", function() {
-  setvalue(')');
-});
-
-//adding dot only one dot can be added in the expression
-document.getElementById("dot").addEventListener("click", function() {
-  let x = getvalue();
-  if (x.indexOf('.') == -1) {
-    setvalue('.');
+//Memory Functions
+const ms = [];
+var index = 0;
+function memory(x) {
+  // M+ => memory plus
+  if (x == "mplus") {
+    ms.push(parseInt(result.value));
+    result.value = "";
+    console.log(ms);
   }
-});
 
-//find degree
-document.getElementById("deg").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = (x * Math.PI) / 180.0;
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
+  // M- => Memory subtract
+  else if (x == "msub") {
+    let temp = "-" + result.value;
+    ms.push(parseInt(temp));
+    result.value = "";
+    console.log(ms);
   }
-});
 
-//find fe
-document.getElementById("fe").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = (x - 32)*1.8;
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
+  // MC => Memory Clear
+  else if (x == "mclear") {
+    ms.splice(0, ms.length);
+    result.value = "";
+    console.log(ms);
   }
-});
 
-//will give Euler's number
-document.getElementById("e").addEventListener("click", function() {
-  setvalue(Math.E);
-  opera = 1;
-});
-
-//find 1/x of the given number
-document.getElementById("root").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = 1 / eval(x);
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//find square root of the given number
-document.getElementById("sqrt").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.sqrt(eval(x));
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//find mode of the given  number
-document.getElementById("mode").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.abs(eval(x));
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//find square of given number
-document.getElementById("square").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.pow(eval(x), 2);
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//will give cube number
-document.getElementById("cube").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.cbrt(x);
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//Function X Cube
-document.getElementById("xcube").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    screen.value = Math.pow(eval(x), 3);
-    opera = 1;
-  } catch(err) {
-    screen.value = "Error";
-  }
-});
-
-//Function Y root Of X
-document.getElementById("yrootx").addEventListener("click",function() {
-  let x = getvalue();
-  try{
-    y = Math.pow(eval(x));
-    screen.value = Math.pow(eval(x), 1/y);
-    opera = 1;
-  } catch(err) {
-    screen.value = "Error";
-  }
-});
-
-//will give e raise to x
-document.getElementById("exp").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.pow(Math.E, eval(x));
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//will give ten raise to x
-document.getElementById("base10").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.pow(10, eval(x));
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//will give natural log
-document.getElementById("log").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.log10(eval(x));
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//will give log base 10
-document.getElementById("ln").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-    screen.value = Math.log(eval(x));
-    opera = 1;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//Will change the sign of screen value
-document.getElementById("sign").addEventListener("click", function() {
-  let x = getvalue();
-  try {
-  	if(screen.value <= 0)
-    	screen.value = Math.abs(eval(x));
-    else if(screen.value > 0)
-    	screen.value = -screen.value;
-  } catch (err) {
-    screen.value = "Error";
-  }
-});
-
-//Factorial of the number given in the screen
-document.getElementById("factorial").addEventListener("click", function() {
-  let x = getvalue();
-  fact = 1;
-  try {
-  	if(screen.value == 0)
-    	screen.value = 1;
-    else{
-    	for(let i = 1; i <= screen.value; i++){
-      	fact *= i;
-			}
-      screen.value = fact;
+  //MR => Memory Recall
+  else if (x == "mrecall") {
+    if (ms.length == 0) {
+      alert("Memory was Empty");
+    } else {
+      var sum = ms.reduce(function (a, b) {
+        return a + b;
+      }, 0);
+      console.log("total" + sum);
+      result.value = sum;
     }
-  } catch (err) {
-    screen.value = "Error";
   }
-});
+
+  // MS => Memory Store
+  else if (x == "mstore") {
+    if (ms.length == 0) {
+      alert("Memory was Empty");
+    } else {
+      index %= ms.length;
+      result.value = ms[index];
+      index++;
+    }
+  }
+}
+
+//reciprocal
+function reciprocal() {
+  let answer = 1 / result.value;
+  result.value = answer.toFixed(3);
+}
+
+//Clear Value
+function clr() {
+  result.value = "";
+}
+
+//delete single value
+function del() {
+  result.value = result.value.slice(0, -1);
+}
