@@ -74,7 +74,7 @@ let Result = () => {
   }
 
   // sec function
-  else if (result.value.includes("sce")) {
+  else if (result.value.includes("sec")) {
     let temp = result.value;
     let n = temp.replaceAll("sec", "");
     result.value = 1 / Math.cos(n);
