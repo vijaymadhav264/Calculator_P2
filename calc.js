@@ -133,14 +133,12 @@ let Result = () => {
   // square root function
   else if (result.value.includes("√")) {
     let n = result.value.substring(1);
-    console.log(n);
     result.value = Math.sqrt(n);
   }
 
    // cube root function
    else if (result.value.includes("∛")) {
     let n = result.value.substring(1);
-    console.log(n);
     result.value = Math.cbrt(n);
   }
 
@@ -169,7 +167,6 @@ function memory(x) {
   if (x == "mplus") {
     ms.push(parseInt(result.value));
     result.value = "";
-    console.log(ms);
   }
 
   // M- => Memory subtract
@@ -177,14 +174,12 @@ function memory(x) {
     let temp = "-" + result.value;
     ms.push(parseInt(temp));
     result.value = "";
-    console.log(ms);
   }
 
   // MC => Memory Clear
   else if (x == "mclear") {
     ms.splice(0, ms.length);
     result.value = "";
-    console.log(ms);
   }
 
   //MR => Memory Recall
@@ -195,7 +190,6 @@ function memory(x) {
       var sum = ms.reduce(function (a, b) {
         return a + b;
       }, 0);
-      console.log("total" + sum);
       result.value = sum;
     }
   }
