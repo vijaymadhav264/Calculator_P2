@@ -1,4 +1,4 @@
-let result = document.getElementById("inputlabel");
+let result = document.querySelector("#inputlabel");
 
 let calculate = (number) => {
   result.value += number;
@@ -53,81 +53,19 @@ let Result = () => {
     let n = temp.replaceAll("asinh", "");
     result.value = Math.asinh(n);
   }
-  // cosec function
-  else if (result.value.includes("cosec")) {
-    let temp = result.value;
-    let n = temp.replaceAll("cosec", "");
-    result.value = 1 / Math.sin(n);
-  }
-  // sin function
-  else if (result.value.includes("sin")) {
-    let temp = result.value;
-    let n = temp.replaceAll("sin", "");
-    result.value = Math.sin(n);
-  }
-
+  
   // acosh function
   else if (result.value.includes("acosh")) {
     let temp = result.value;
     let n = temp.replaceAll("acosh", "");
     result.value = Math.acosh(n);
   }
-
-  // sec function
-  else if (result.value.includes("sec")) {
-    let temp = result.value;
-    let n = temp.replaceAll("sec", "");
-    result.value = 1 / Math.cos(n);
-  }
-  // cos function
-  else if (result.value.includes("cos")) {
-    let temp = result.value;
-    let n = temp.replaceAll("cos", "");
-    result.value = Math.cos(n);
-  }
+  
   // atanh function
   else if (result.value.includes("atanh")) {
     let temp = result.value;
     let n = temp.replaceAll("atanh", "");
     result.value = Math.atanh(n);
-  }
-  // cot function
-  else if (result.value.includes("cot")) {
-    let temp = result.value;
-    let n = temp.replaceAll("cot", "");
-    result.value = 1 / Math.tan(n);
-  }
-
-  // tan function
-  else if (result.value.includes("tan")) {
-    let temp = result.value;
-    let n = temp.replaceAll("tan", "");
-    result.value = Math.tan(n);
-  }
-
-  // floor function
-  else if (result.value.includes("floor")) {
-    let temp = result.value;
-    let n = temp.replaceAll("floor", "");
-    result.value = Math.floor(n);
-  }
-  // ceil function
-  else if (result.value.includes("ceil")) {
-    let temp = result.value;
-    let n = temp.replaceAll("ceil", "");
-    result.value = Math.ceil(n);
-  }
-  // round function
-  else if (result.value.includes("round")) {
-    let temp = result.value;
-    let n = temp.replaceAll("round", "");
-    result.value = Math.round(n);
-  }
-  // sign function
-  else if (result.value.includes("sign")) {
-    let temp = result.value;
-    let n = temp.replaceAll("sign", "");
-    result.value = Math.sign(n);
   }
 
   // square root function
@@ -204,6 +142,46 @@ function memory(x) {
       index++;
     }
   }
+}
+//Function Floor()
+function floor() {
+  result.value = Math.floor(result.value)
+}
+//Function Ceil()
+function ceil() {
+  result.value = Math.ceil(result.value)
+}
+//Function Round()
+function round() {
+  result.value = Math.round(result.value)
+}
+//Function sign()
+function sign () {
+  result.value = Math.sign(result.value)
+}
+//Function Sin()
+function sin() {
+    result.value = Math.sin(result.value);
+}
+//Function cos()
+function cos() {
+  result.value = Math.cos(result.value);
+}
+//Function tan()
+function tan() {
+  result.value = Math.tan(result.value);
+}
+//Function Cosec()
+function cosec() {
+  result.value = 1 / Math.sin(result.value);
+}
+//Function Sec()
+function sec() {
+  result.value = 1 / Math.cos(result.value);
+}
+//Function Cot()
+function cot() {
+  result.value = 1 / Math.tan(result.value);
 }
 
 //reciprocal
